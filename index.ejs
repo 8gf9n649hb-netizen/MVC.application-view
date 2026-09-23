@@ -1,0 +1,26 @@
+<!-- views/users/index.ejs -->
+<!-- VIEW = only concerned with WHAT THE USER SEES. It just takes the
+     data the Controller passed it ("users") and displays it. No
+     business logic, no direct data-fetching here. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Users</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <h1>User List (MVC Demo)</h1>
+  <a href="/users/new">+ Add User</a>
+  <ul>
+    <% users.forEach(function(user) { %>
+      <li>
+        <%= user.name %> (<%= user.email %>)
+        <form action="/users/<%= user.id %>/delete" method="POST" style="display:inline">
+          <button type="submit">Delete</button>
+        </form>
+      </li>
+    <% }); %>
+  </ul>
+</body>
+</html>
